@@ -1,0 +1,23 @@
+{
+  "name": "nidm-term-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nidm-term-search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smpadhy/nidm-term-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smpadhy/nidm-term-search/issues"
+  },
+  "homepage": "https://github.com/smpadhy/nidm-term-search#readme",
+  "dependencies": {
+    "load-json-file": "^2.0.0",
+    "rdfstore": "^0.9.17"
+  }
+}
