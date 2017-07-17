@@ -32,12 +32,11 @@
 
 <body>
 <div id="demo">
-
+  <p> <h3>Select NIDM OWL File </h3></p>
   <select v-model="selected">
   <option disabled value="">Please select one</option>
-  <option>A</option>
-  <option>B</option>
-  <option>C</option>
+  <option value= "https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl">NIDM-Experiment</option>
+  <option value="https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-results_130.owl">NIDM-Results</option>
 </select>
   <span>Selected: {{ selected }}</span>
  <br>
@@ -52,7 +51,7 @@
 
 $.ajax({
   type: "GET",
-  url: "https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/nidm-results_130.owl",
+  url: "https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-results_130.owl",
   success: function(data){
     //console.log(data)
     new rdfstore.Store(function(err, store) {
