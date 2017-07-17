@@ -1,0 +1,586 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Explore Neuro Imaging Data Model Experiment Terms</title>
+  <style>
+  body {
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+  }
+
+  table {
+    border: 2px solid #42b983;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+
+  th {
+    background-color: #42b983;
+    color: rgba(255,255,255,0.66);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  td {
+    background-color: #f9f9f9;
+  }
+
+  th, td {
+    min-width: 120px;
+    padding: 10px 20px;
+  }
+
+  th.active {
+    color: #fff;
+  }
+
+  th.active .arrow {
+    opacity: 1;
+  }
+
+  .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    opacity: 0.66;
+  }
+
+  .arrow.asc {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #fff;
+  }
+
+  .arrow.dsc {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff;
+  }
+
+  </style>
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/x-template" id="grid-template">
+  <table>
+    <thead>
+      <tr>
+        <th v-for="key in columns">
+          {{ key }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="entry in data">
+        <td v-for="key in columns">
+          {{entry[key]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+  </head>
+
+<body>
+  <div id="demo">
+  <demo-grid
+    :data="gridData"
+    :columns="gridColumns">
+  </demo-grid>
+  </div>
+
+<script>
+// register the grid component
+Vue.component('demo-grid', {
+  template: '#grid-template',
+  props: {
+    data: Array,
+    columns: Array
+  },
+  data: function () {
+    var sortOrders = {}
+    this.columns.forEach(function (key) {
+      sortOrders[key] = 1
+    })
+    return {
+      sortKey: '',
+      sortOrders: sortOrders
+    }
+  }
+})
+
+var items = [ { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ParallelImagingMethod' },
+    label:
+     { token: 'literal',
+       value: 'Parallel Imaging Method',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'The method used to acquire the k-space data using MRI in which multiple coils are employed and the signals from each coil are disambiguated using the coil sensitivity profile.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#AcquisitionAuxiliaryFile' },
+    label:
+     { token: 'literal',
+       value: 'Acquisition Auxiliary File',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A file, from which parameters used by the acquisition system, are loaded .',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#DemographicsAcquisitionObject' },
+    label:
+     { token: 'literal',
+       value: 'Demographics Acquisition Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A demographics acquisition object is an entity that represents the demographics information acquired from a person in the subject role.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#StudySubject' },
+    label:
+     { token: 'literal',
+       value: 'Study Subject',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A study subject is a role for an Agent (either living or non-living) that has data collected from them during a study.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000010' },
+    label:
+     { token: 'literal',
+       value: 'has fMRI Design',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A property that associates an fMRI design to a design matrix in first-level fMRI analyses.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#hasImageContrastType' },
+    label:
+     { token: 'literal',
+       value: 'has Image Contrast Type',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A property that associates an ImageContrastType to a ImageAcquisitionObject.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#hasImageUsageType' },
+    label:
+     { token: 'literal',
+       value: 'has Image Usage Type',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A property that associates an ImageUsageType to a ImageAcquisitionObject.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#AcquisitionObject' },
+    label:
+     { token: 'literal',
+       value: 'Acquisition Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An acquisition object is an entity that represents a single stream of data, where multiple acquisitions in the same study take place simultaneously. For example, fMRI and physiological recordings.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#AuxilliaryFileCollection' },
+    label:
+     { token: 'literal',
+       value: 'Auxilliary File Collection',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An entity that contains the URI\'s of files that are necessary for the processing of the data, behavioral response files in fMRI experiments, b-value and b-vector files in diffusion-weighted MR imaging.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#StudyObject' },
+    label:
+     { token: 'literal',
+       value: 'Study Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#BaselineProtocol' },
+    label:
+     { token: 'literal',
+       value: 'Baseline Protocol',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A baseline protocol is a plan that represents the study design for a given project.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject: { token: 'uri', value: 'http://purl.org/nidash/nidm#Cartesian' },
+    label:
+     { token: 'literal',
+       value: 'Cartesian',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A method used to acquire the k-space in MRI in which a single linear sampling of k-space is performed for each repetition of the pulse sequence.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#k-spaceTraversalScheme' },
+    label:
+     { token: 'literal',
+       value: 'k-space Traversal Scheme',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A description of the path along which MRI k-space data is acquired.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ClinicalAssessmentAcquisitionObject' },
+    label:
+     { token: 'literal',
+       value: 'Clinical Assessment Acquisition Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#DICOMTagCollection' },
+    label:
+     { token: 'literal',
+       value: 'DICOM Tag Collection',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An entity that contains information stored in the header of the associated data files in the DICOM format as tags.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#EchoPlanar' },
+    label:
+     { token: 'literal',
+       value: 'Echo Planar',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A method used to acquire the k-space in MRI in which the entirety of k-space is continuously traversed for each repetition of the pulse sequence.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ElectrophysiologyAcquisitionObject' },
+    label:
+     { token: 'literal',
+       value: 'Electrophysiology Acquisition Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An electrophysiology acquisition object represents the data from a specific series or scan during an electrophysiology study.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ExperimentAuxiliaryFile' },
+    label:
+     { token: 'literal',
+       value: 'Experiment Auxiliary File',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A file that is generated in the course of an experiment that is used either in the acquisition or processing of the data.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ImageAcquisitionMethod' },
+    label:
+     { token: 'literal',
+       value: 'Image Acquisition Method',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'The method used to acquire the k-space data in MRI.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#Inside-outSpiral' },
+    label:
+     { token: 'literal',
+       value: 'Inside-out Spiral',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'Denotes that the path along which MRI k-space data is acquired is spiral and the data at the center of k-space is acquired first.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#Outside-inSpiral' },
+    label:
+     { token: 'literal',
+       value: 'Outside-in Spiral',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'Denotes that the path along which MRI k-space data is acquired is spiral and the data further away from the center of k-space is acquired first.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#PerformedPlan' },
+    label:
+     { token: 'literal',
+       value: 'Performed Plan',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'The actual implementation of a plan during a data acquisition session.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#PETAcquisitionObject' },
+    label:
+     { token: 'literal',
+       value: 'PET Acquisition Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An PET acquisition object represents the data from a specific series or scan during an PET study.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#PrincipalInvestigator' },
+    label:
+     { token: 'literal',
+       value: 'Principal Investigator',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A principal investigator is a role for a person that take responsibility for a project activity.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ProjectObject' },
+    label:
+     { token: 'literal',
+       value: 'Project Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A project object is an entity that represents administrative information about one or more studies. THIS IS VAGUE.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#PulseSequence' },
+    label:
+     { token: 'literal',
+       value: 'Pulse Sequence',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'The sequence of commands sent to the MRI hardware to control the excitation of the subject and the acquisition of data.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#RawAcquisitionObject' },
+    label:
+     { token: 'literal',
+       value: 'Raw Acquisition Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A raw acquisition object is an entity that is the result of the acquisition activity, but has not yet undergone any further processing steps such as image reconstruction.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#Rectilinear' },
+    label:
+     { token: 'literal',
+       value: 'Rectilinear',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A method used to acquire the k-space in MRI in which a single linear sampling of k-space is performed for each repetition of the pulse sequence.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#ResearchAssistant' },
+    label:
+     { token: 'literal',
+       value: 'Research Assistant',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000428' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#SeriesObject' },
+    label:
+     { token: 'literal',
+       value: 'Series Object',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A series object is an entity that represents one acquisition that take place during the same temporal epoch.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#SimultaneousMultisliceMethod' },
+    label:
+     { token: 'literal',
+       value: 'Simultaneous Multislice Method',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A method used to acquire the k-space in MRI in which data from multiple slices are acquired at the same time and the coil sensitivity profiles are used to separate the data from each slice.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#SpecifiedPlan' },
+    label:
+     { token: 'literal',
+       value: 'Specified Plan',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'The intended implementation of a plan during a data acquisition session.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#StimulusPresentationFile' },
+    label:
+     { token: 'literal',
+       value: 'Stimulus Presentation File',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A file that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study subject in an task-based fMRI experiment.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#bValueFile' },
+    label:
+     { token: 'literal',
+       value: 'b-value File',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A file that contains the b values used in a diffusion-weighted MRI experiment.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#bVectorFile' },
+    label:
+     { token: 'literal',
+       value: 'b-vector File',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A file that contains the b vectors used in a diffusion-weighted MRI experiment.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#fMRIDesignType' },
+    label:
+     { token: 'literal',
+       value: 'fMRI Design Type',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://semanticscience.org/resource/SIO_000004' },
+    label:
+     { token: 'literal',
+       value: 'material entity',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.',
+       lang: 'en' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://semanticscience.org/resource/SIO_000015' },
+    label:
+     { token: 'literal',
+       value: 'information content entity',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'information content entity is an object that requires some background knowledge or procedure to correctly interpret.',
+       lang: 'en' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000152' },
+    label:
+     { token: 'literal',
+       value: 'Block-Based Design',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An fMRI design comprised of epochs of stimulus and/or behavior.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000153' },
+    label:
+     { token: 'literal',
+       value: 'Event-Related Design',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An fMRI design comprised of discrete events of stimulus and/or behavior.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject:
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000154' },
+    label:
+     { token: 'literal',
+       value: 'Mixed Design',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc:
+     { token: 'literal',
+       value: 'An fMRI design comprised of both epochs & discrete events of stimulus and/or behavior.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } } ]
+console.log("items: ", items)
+let triples = []
+let triple = {}
+
+for(let i = 0 ; i<items.length; i++){
+  triple['URI'] = items[i]['subject'].value
+  triple['Term'] = items[i]['label'].value
+  triple['Description'] = items[i]['desc'].value
+  triples.push(triple)
+  triple = {}
+}
+console.log("triples", triple)
+// bootstrap the demo
+var demo = new Vue({
+  el: '#demo',
+  data: {
+    gridColumns: ['Term', 'Description', 'URI'],
+    gridData: triples
+  }
+})
+</script>
+</body>
+</html>
