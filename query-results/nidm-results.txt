@@ -1,0 +1,751 @@
+----- Query Results  ----------
+[ { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000101' },
+    label: { token: 'literal', value: 'has Error Distribution' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates a Probability distribution used to model the error with an ErrorModel.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000088' },
+    label: { token: 'literal', value: 'has Drift Model' },
+    desc: 
+     { token: 'literal',
+       value: 'A property that associates a \'Drift Model\' to a \'Design Matrix\' (only used for first-level fMRI experiments).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000134' },
+    label: { token: 'literal', value: 'with Estimation Method' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates a  [stato:"model parameter estimation"](http://purl.obolibrary.org/obo/STATO_0000119) method with a model parameter estimation' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000082' },
+    label: { token: 'literal', value: 'cluster Label Id' },
+    desc: 
+     { token: 'literal',
+       value: 'Integer value used in the cluster label map to identify the location of the cluster within the excursion set.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000111' },
+    label: 
+     { token: 'literal',
+       value: 'number Of Supra-Threshold Clusters' },
+    desc: 
+     { token: 'literal',
+       value: 'Number of \'Supra-Threshold Clusters\' found by the \'Inference\' activity. This is SPM\'s set level statistic.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000139' },
+    label: { token: 'literal', value: 'coordinate Vector In Voxels' },
+    desc: 
+     { token: 'literal',
+       value: 'Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/spm#SPM_0000008' },
+    label: { token: 'literal', value: 'noise FWHM In Vertices' },
+    desc: 
+     { token: 'literal',
+       value: 'Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in vertices.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000020' },
+    label: { token: 'literal', value: 'Display Mask Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A \'Binary Map\' used by an activity that changed the voxels displayed, but did not alter the space in which the activity was performed (e.g. at the level of \'Inference\', this mask is called "contrast masking" in both FSL & SPM and does not alter voxel-wise corrected p-values)' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000066' },
+    label: { token: 'literal', value: 'Residual Mean Squares Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [residual mean square](http://purl.obolibrary.org/obo/STATO_0000375).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000160' },
+    label: { token: 'literal', value: 'P-Value Uncorrected' },
+    desc: 
+     { token: 'literal',
+       value: 'A p-value reported without correction for multiple testing.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000042' },
+    label: 
+     { token: 'literal',
+       value: 'Icbm Mni152 Non Linear2009a Symmetric Coordinate System' },
+    desc: 
+     { token: 'literal',
+       value: 'Reference space defined as the average of 152 T1-weighted MRI scans, non-linearly transformed to to form a symmetric model in MNI152 linear space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/spm#SPM_0000006' },
+    label: { token: 'literal', value: 'SPM\'s Temporal Derivative' },
+    desc: 
+     { token: 'literal',
+       value: '\'Hemodynamic Response Function\' basis that is the derivative with respect to time of the SPM\'s Canonical heamodynamic response function.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/STATO_0000370' },
+    label: 
+     { token: 'literal',
+       value: 'ordinary least squares estimation',
+       lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'the ordinary least squares estimation is a model parameter estimation for a linear regression model when the errors are uncorrelated and equal in variance. Is the Best Linear Unbiased Estimation (BLUE) method under these assumptions, Uniformly Minimum-Variance Unbiased Estimator (UMVUE) with addition of a Gaussian assumption.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/dc/elements/1.1/description' },
+    label: { token: 'literal', value: 'Description', lang: 'en' },
+    desc: { token: 'literal', value: 'An account of the resource.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000116' },
+    label: { token: 'literal', value: 'editor note', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: 
+     { token: 'literal',
+       value: 'definition',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc: 
+     { token: 'literal',
+       value: 'The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: 
+     { token: 'literal',
+       value: 'textual definition',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc: 
+     { token: 'literal',
+       value: 'The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: { token: 'literal', value: 'definition' },
+    desc: 
+     { token: 'literal',
+       value: 'The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: { token: 'literal', value: 'definition', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: 
+     { token: 'literal',
+       value: 'definition',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc: 
+     { token: 'literal',
+       value: 'The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: 
+     { token: 'literal',
+       value: 'textual definition',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc: 
+     { token: 'literal',
+       value: 'The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: { token: 'literal', value: 'definition' },
+    desc: 
+     { token: 'literal',
+       value: 'The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000115' },
+    label: { token: 'literal', value: 'definition', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000122' },
+    label: { token: 'literal', value: 'ready for release', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'Class has undergone final review, is ready for use, and will be included in the next release. Any class lacking "ready_for_release" should be considered likely to change place in hierarchy, have its definition refined, or be obsoleted in the next release.  Those classes deemed "ready_for_release" will also derived from a chain of ancestor classes that are also "ready_for_release."',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000019' },
+    label: { token: 'literal', value: 'Design Matrix' },
+    desc: 
+     { token: 'literal',
+       value: 'A [stato:design matrix](http://purl.obolibrary.org/obo/STATO_0000289), with additional neuroimaging attributes, including HRF and drift for first-level fMRI models' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000087' },
+    label: { token: 'literal', value: 'Drift Model' },
+    desc: 
+     { token: 'literal',
+       value: 'A model used to compensate for low frequency baseline drifts when analyzing functional MRI data at the subject level.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000089' },
+    label: { token: 'literal', value: 'dependence Map-Wise Dependence' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates an \'Error Parameter Map-Wise Dependence\' to the dependence of an \'Error Model\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000023' },
+    label: { token: 'literal', value: 'Error Model' },
+    desc: 
+     { token: 'literal',
+       value: 'Model used to describe the random variation of the error term as part of parameter estimation, including specification of the error probability distribution, its variance and dependence both spatially and across observations.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000071' },
+    label: 
+     { token: 'literal',
+       value: 'Error Parameter Map-Wise Dependence' },
+    desc: 
+     { token: 'literal',
+       value: 'Map-wise dependence structure of a parameter in the \'Error Model\' (i.e. variance or dependence parameter). For example, whether a temporal autocorrelation parameter is estimated at each element separately, estimated using data in a local neighbourhood, or estimated using all elements in the map.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000049' },
+    label: { token: 'literal', value: 'Inference' },
+    desc: 
+     { token: 'literal',
+       value: 'Statistical \'Inference\' is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000079' },
+    label: { token: 'literal', value: 'Two Tailed Test' },
+    desc: 
+     { token: 'literal',
+       value: 'Re-use "two tailed test" from STATO',
+       type: 'http://www.w3.org/2001/XMLSchema#anyURI' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000098' },
+    label: { token: 'literal', value: 'has Cluster Labels Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A property that associates a clusters label map to the excursion set.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000008' },
+    label: { token: 'literal', value: 'Cluster Labels Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map whose value at each element (e.g., pixel, voxel, vertex, or face) denotes cluster membership within the excursion set. Each cluster is denoted by a different integer and all members of the same cluster have the same value.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000025' },
+    label: { token: 'literal', value: 'Excursion Set Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map in which the set of elements (e.g., pixels, voxels, vertices, or faces) not selected by the \'Inference\' activity is set to zero or NaN' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000099' },
+    label: { token: 'literal', value: 'has Connectivity Criterion' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates a \'Connectivity Criterion\' with a \'Cluster Definition Criteria\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000117' },
+    label: { token: 'literal', value: 'term editor', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'Name of editor entering the term in the file. The term editor is a point of contact for information regarding the term. The term editor may be, but is not always, the author of the definition, which may have been worked upon by several people',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000007' },
+    label: { token: 'literal', value: 'Cluster Definition Criteria' },
+    desc: 
+     { token: 'literal',
+       value: 'Set of criterion specified a priori to define the clusters reported after \'Inference\' (e.g. pixel or voxel \'Connectivity Criterion\').' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000012' },
+    label: { token: 'literal', value: 'Connectivity Criterion' },
+    desc: 
+     { token: 'literal',
+       value: 'The criterion used to characterize two voxels, pixels or vertices as \'connected\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000100' },
+    label: { token: 'literal', value: 'has Error Dependence' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates a covariance structure representing the dependence structure of the error, used as part of model estimation with an \'Error Model\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/STATO_0000346' },
+    label: { token: 'literal', value: 'covariance structure', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'a covariance structure is a data item which is part of a regression model and which indicates a pattern in the covariance matrix. The nature of covariance structure is specified before the regression analysis and various covariance structure may be tested and evaluated using information criteria to help choose the most suiteable model',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/STATO_0000225' },
+    label: 
+     { token: 'literal',
+       value: 'probability distribution',
+       lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'A probability distribution is a information content entity specifies the probability of the value of a random variable.\n\nFor a discrete random variable, a mathematical formula that gives the probability of each value of the variable. For a continuous random variable, a curve described by a mathematical formula which specifies, by way of areas under the curve, the probability that the variable falls within a particular interval.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000102' },
+    label: { token: 'literal', value: 'has HRF Basis' },
+    desc: 
+     { token: 'literal',
+       value: 'A property that associates a set of functions that, when convolved with the anticipated neural responses, yields a set of regressors to model the anticipated hemodynamic responses in a \'Design Matrix\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000103' },
+    label: { token: 'literal', value: 'has Map Header' },
+    desc: 
+     { token: 'literal',
+       value: 'A Property that associates an additional file containing the \'Map Header\' with a map' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000052' },
+    label: { token: 'literal', value: 'Map' },
+    desc: 
+     { token: 'literal',
+       value: 'Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000053' },
+    label: { token: 'literal', value: 'Map Header' },
+    desc: 
+     { token: 'literal',
+       value: 'A file associated with a Map to provide header information (e.g. NIfTI header file)' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000104' },
+    label: { token: 'literal', value: 'in Coordinate Space' },
+    desc: 
+     { token: 'literal',
+       value: 'Property of a DataArray to associate a \'Coordinate Space\' with a physical file.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000016' },
+    label: { token: 'literal', value: 'Coordinate Space' },
+    desc: 
+     { token: 'literal',
+       value: 'An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a \'Map\' (e.g., a \'Statistic Map\', a \'Contrast Map\'...).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000105' },
+    label: { token: 'literal', value: 'in World Coordinate System' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates a \'World Coordinate System\' to the \'Coordinate Space\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000081' },
+    label: { token: 'literal', value: 'World Coordinate System' },
+    desc: 
+     { token: 'literal',
+       value: 'Reference space on which real-world positions are expressed (cf. [Nifti-1 FAQ question 14](http://nifti.nimh.nih.gov/nifti-1/documentation/faq#Q14) and [Understanding affines on nipy](http://nipy.org/nipy/stable/devel/code_discussions/understanding_affines.html)\n). A world coordinate system can be represented by an image obtained by registering an initial set of images, using a given normalization algorithm to match a target template.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000124' },
+    label: { token: 'literal', value: 'uncurated', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'Nothing done yet beyond assigning a unique class ID and proposing a preferred term.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000057' },
+    label: { token: 'literal', value: 'NIDM Object Model' },
+    desc: 
+     { token: 'literal',
+       value: 'Abstraction on the data model, developed for a specific application/use-case/task at hand,  that specifies the components and relations necessary for use by these applications. The same object model can be reused by multiple applications (e.g., meta-analysis, Neurovault).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000123' },
+    label: { token: 'literal', value: 'statistic Type' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates a  [stato:"statistic"](http://purl.obolibrary.org/obo/STATO_0000039) with a StatisticMap or a ContrastWeights entity.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/STATO_0000039' },
+    label: { token: 'literal', value: 'statistic', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'a statistic is a measurement datum to describe a dataset or a variable. It is generated by a calculation on set of observed data.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/STATO_0000323' },
+    label: { token: 'literal', value: 'contrast weight matrix', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'a contrast weight matrix is a information content entity which holds a set of contrast weight, coefficient used in a weighting sum of means defining a contrast',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000076' },
+    label: { token: 'literal', value: 'Statistic Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [statistic](http://purl.obolibrary.org/obo/STATO_0000039).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000126' },
+    label: { token: 'literal', value: 'variance Map-Wise Dependence' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates an \'Error Parameter Map-Wise Dependence\' to the variance of an \'Error Model\'' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/STATO_0000119' },
+    label: 
+     { token: 'literal',
+       value: 'model parameter estimation',
+       lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'model parameter estimation is a data transformation that finds parameter values (the model parameter estimates) most compatible with the data as judged by the model.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000056' },
+    label: { token: 'literal', value: 'Model Parameter Estimation' },
+    desc: 
+     { token: 'literal',
+       value: 'the process of performing a [obo:model parameter estimation](http://purl.obolibrary.org/obo/STATO_0000119) at each element (e.g., pixel, voxel, vertex, or face) of a map' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000138' },
+    label: { token: 'literal', value: 'has Maximum Intensity Projection' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates an image of the maximum intensity projection with an \'Excursion Set Map\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000161' },
+    label: { token: 'literal', value: 'equivalent Threshold' },
+    desc: 
+     { token: 'literal',
+       value: 'Property that associates another \'Threshold\' that is equivalent (e.g. if the user specified a \'Threshold\' in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000125' },
+    label: { token: 'literal', value: 'pending final vetting', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'All definitions, placement in the asserted IS_A hierarchy and required minimal metadata are complete. The class is awaiting a final review by someone other than the term editor.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000162' },
+    label: 
+     { token: 'literal',
+       value: 'Threshold',
+       type: 'http://www.w3.org/2001/XMLSchema#string' },
+    desc: 
+     { token: 'literal',
+       value: 'A numerical value that establishes a bound on a set of statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value, FDR-corrected q-value or statistic value',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000172' },
+    label: { token: 'literal', value: 'has MRI Protocol' },
+    desc: 
+     { token: 'literal',
+       value: '\'MRI Protocol\' used to acquire these \'Data\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000169' },
+    label: { token: 'literal', value: 'Data' },
+    desc: 
+     { token: 'literal',
+       value: 'Information about the input Data, including scaling applied to the data before parameter estimation..' } },
+  { subject: { token: 'uri', value: 'http://www.w3.org/ns/prov#atLocation' },
+    label: { token: 'literal', value: 'atLocation' },
+    desc: { token: 'literal', value: 'The Location of any resource.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/fsl#FSL_0000004' },
+    label: { token: 'literal', value: 'drift Cutoff Period' },
+    desc: 
+     { token: 'literal',
+       value: 'Doubled standard deviation in seconds of the Gaussian weight function used in the running line smoother.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/fsl#FSL_0000002' },
+    label: { token: 'literal', value: 'Gaussian Running Line Drift Model' },
+    desc: 
+     { token: 'literal',
+       value: 'A \'Drift Model\' in which the drifts are modeled with a Gaussian-weighted running line smoother, fit to and subtracted from the data and each column of the \'Design Matrix\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/fsl#FSL_0000005' },
+    label: { token: 'literal', value: 'feat Version' },
+    desc: { token: 'literal', value: 'Version of the FEAT software.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://scicrunch.org/resolver/SCR_002823' },
+    label: { token: 'literal', value: 'FSL' },
+    desc: 
+     { token: 'literal',
+       value: 'A comprehensive library of image analysis and statistical tools for fMRI, MRI and DTI brain imaging data. The tools include registration, atlases, Diffusion MRI tools for parameter reconstruction and probabilistic taractography, and a viewer. FSL runs on Apple and PCs (Linux and Windows), and is very easy to install. Most of the tools can be run both from the command line and as GUIs (\'point-and-click\' graphical user interfaces). Several complementary brain atlases, integrated into FSLView and Featquery, allowing viewing of structural and cytoarchitectonic standard space labels and probability maps for cortical and subcortical structures and white matter tracts. Atlases included with FSL: * Harvard-Oxford cortical and subcortical structural atlases * Julich histological atlas * JHU DTI-based white-matter atlases * Oxford thalamic connectivity atlas * Talairach atlas * MNI structural atlas * Cerebellum atlas FSL is written mainly by members of the Analysis Group, FMRIB, Oxford, UK.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000021' },
+    label: { token: 'literal', value: 'regressor Names' },
+    desc: 
+     { token: 'literal',
+       value: 'A list of abstract names associated with each column of the \'Design Matrix\' (e.g. ["motor_left", "motor_right"]).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000112' },
+    label: { token: 'literal', value: 'example of usage', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'A phrase describing how a class name should be used. May also include other kinds of examples that facilitate immediate understanding of a class semantics, such as widely known prototypical subclasses or instances of the class. Although essential for high level terms, examples for low level terms (e.g., Affymetrix HU133 array) are not',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000070' },
+    label: { token: 'literal', value: 'Supra-Threshold Cluster' },
+    desc: 
+     { token: 'literal',
+       value: 'A cluster of map elements (e.g., pixels, voxels, vertices, and faces) that were selected by the \'Inference\' activity and are contiguous according to the cluster \'Connectivity Criterion\'.',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000084' },
+    label: { token: 'literal', value: 'cluster Size In Voxels' },
+    desc: 
+     { token: 'literal',
+       value: 'Number of voxels that make up the cluster.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000026' },
+    label: { token: 'literal', value: 'Extent Threshold' },
+    desc: 
+     { token: 'literal',
+       value: 'A numerical value that establishes a lower bound on cluster-sizes and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value or minimum cluster size in voxels' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000085' },
+    label: { token: 'literal', value: 'contrast Name' },
+    desc: { token: 'literal', value: 'Name of the contrast.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000120' },
+    label: { token: 'literal', value: 'metadata complete', lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'Class has all its metadata, but is either not guaranteed to be in its final location in the asserted IS_A hierarchy or refers to another class that is not complete.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000002' },
+    label: { token: 'literal', value: 'Contrast Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [contrast estimate](http://purl.obolibrary.org/obo/STATO_0000384).',
+       type: 'http://www.w3.org/2001/XMLSchema#string' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000086' },
+    label: { token: 'literal', value: 'coordinate Vector' },
+    desc: 
+     { token: 'literal',
+       value: 'A vector with one number per dimension. The first element corresponds to the \'Coordinate\' along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the \'Coordinate\' along the second dimension etc.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000090' },
+    label: { token: 'literal', value: 'dimensions In Voxels' },
+    desc: 
+     { token: 'literal',
+       value: 'Number of voxels in each of the dimensions of the data array. For example, "[91, 109, 91]" indicates there are 91 voxels in the first dimension, 109 in the second dimension, and 91 in the third dimension.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000091' },
+    label: { token: 'literal', value: 'effect Degrees Of Freedom' },
+    desc: 
+     { token: 'literal',
+       value: 'In the context of a general linear model, the effect degrees of freedom is the rank of the contrast. For example, a contrast comprising of a vector has effect degrees of freedom of 1 and can be tested with a F-test with numerator degrees of freedom of 1.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000092' },
+    label: { token: 'literal', value: 'equivalent ZStatistic' },
+    desc: 
+     { token: 'literal',
+       value: 'Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000062' },
+    label: { token: 'literal', value: 'Peak' },
+    desc: 
+     { token: 'literal',
+       value: 'A map element (e.g., pixel, voxel, vertex, or face) which is a local maximum in the supra-threshold cluster and complies with the \'Peak definition criteria\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000093' },
+    label: { token: 'literal', value: 'error Degrees Of Freedom' },
+    desc: 
+     { token: 'literal',
+       value: 'In the context of a general linear model, the error degrees of freedom are the number of observations less the rank of the \'Design Matrix\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000094' },
+    label: { token: 'literal', value: 'error Variance Homogeneous' },
+    desc: 
+     { token: 'literal',
+       value: 'A boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000095' },
+    label: { token: 'literal', value: 'partial Conjunction Degree' },
+    desc: 
+     { token: 'literal',
+       value: 'The number of non-null effects permitted in a partial conjunction null, as part of a \'Partial Conjunction Inference\'' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/spm#SPM_0000005' },
+    label: { token: 'literal', value: 'Partial Conjunction Inference' },
+    desc: 
+     { token: 'literal',
+       value: 'The process of testing the joint significance of multiple effects to infer that some (not necessarily all) of the respective effects are real (i.e. their null hypotheses are false). If there are K effects considered, the \'partial Conjunction Degree\' u is the number non-null effects allowed as part of partial conjunction null hypothesis; if the partial conjunction null is rejected, it may be inferred that u+1 or more effects are real. The case of u=K-1 corresponds to proper "\'Conjunction Inference\'", while the case of u=0 corresponds to "global null" conjunction test. See [Friston et al. (2005). Conjunction revisited. NeuroImage, 25(3), 661-7.](http://dx.doi.org/10.1016/j.neuroimage.2005.01.013).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000096' },
+    label: { token: 'literal', value: 'grand Mean Scaling' },
+    desc: 
+     { token: 'literal',
+       value: 'Binary flag defining whether the data was scaled (true for scaled). Specifically, "grand mean scaling" refers to multiplication of every voxel in every scan by a common (or session-specific) value.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000106' },
+    label: { token: 'literal', value: 'is User Defined' },
+    desc: 
+     { token: 'literal',
+       value: 'A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false)' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000004' },
+    label: { token: 'literal', value: 'Binary Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map in which all values are 0, 1 or NaN. Usually, selected elements (e.g., pixels, voxels, vertices, or faces) have a value of 1 and excluded elements (i.e. the background) have a value of 0 or NaN' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000107' },
+    label: { token: 'literal', value: 'masked Median' },
+    desc: 
+     { token: 'literal',
+       value: 'Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000033' },
+    label: { token: 'literal', value: 'Grand Mean Map' },
+    desc: 
+     { token: 'literal',
+       value: 'A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the mean over all observations of that element in the input maps (after any scaling of those input maps)' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000108' },
+    label: { token: 'literal', value: 'max Number Of Peaks Per Cluster' },
+    desc: 
+     { token: 'literal',
+       value: 'Maximum number of \'Peak\'s to be reported after \'Inference\' within a cluster.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000063' },
+    label: { token: 'literal', value: 'Peak Definition Criteria' },
+    desc: 
+     { token: 'literal',
+       value: 'Set of criterion specified a priori to define the \'Peak\'s reported after \'Inference\' (e.g. maximum number of \'Peak\'s within a cluster, minimum distance between \'Peak\'s).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000109' },
+    label: { token: 'literal', value: 'min Distance Between Peaks' },
+    desc: 
+     { token: 'literal',
+       value: 'Minimum distance between two \'Peak\'s to be reported after \'Inference\'.' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000112' },
+    label: { token: 'literal', value: 'number Of Dimensions' },
+    desc: 
+     { token: 'literal',
+       value: 'Number of dimensions of the data matrix (e.g. 3 for volumetric data)' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000115' },
+    label: { token: 'literal', value: 'p Value FWER' },
+    desc: 
+     { token: 'literal',
+       value: '"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.obolibrary.org/obo/IAO_0000423' },
+    label: 
+     { token: 'literal',
+       value: 'to be replaced with external ontology term',
+       lang: 'en' },
+    desc: 
+     { token: 'literal',
+       value: 'Terms with this status should eventually replaced with a term from another ontology.',
+       lang: 'en' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000116' },
+    label: { token: 'literal', value: 'p Value Uncorrected' },
+    desc: 
+     { token: 'literal',
+       value: 'A p-value reported without correction for multiple testing.        ' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000119' },
+    label: { token: 'literal', value: 'q Value FDR' },
+    desc: 
+     { token: 'literal',
+       value: 'A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442).' } },
+  { subject: 
+     { token: 'uri',
+       value: 'http://purl.org/nidash/nidm#NIDM_0000120' },
+    label: { token: 'literal', value: 'random Field Stationarity' },
+    desc: 
+     { token: 'literal',
+       value: 'A binary flag that indicates whether Random Field Theory methods assumed smoothness that was homogeneous over the map (true), or allowed for smoothness that varies over the map (false).' } },
+  ... 131 more items ]
