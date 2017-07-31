@@ -10,6 +10,7 @@
   <script src="https://unpkg.com/vue"></script>
   <script type='text/javascript' src="./lib/rdfstore_min.js">
   </script>
+
   <script type="text/x-template" id="grid-template">
   <table>
     <thead>
@@ -28,79 +29,42 @@
     </tbody>
   </table>
 </script>
-  </head>
+
+</head>
 
 <body>
-<div id="demo">
+<br>
+<div id="gridC">
   <p> <h3>Select NIDM OWL File </h3></p>
   <select v-model="selected">
-  <option disabled value="">Please select one</option>
-  <option value= "https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl">NIDM-Experiment</option>
-  <option value="https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-results_130.owl">NIDM-Results</option>
-</select>
-  <span>Selected: {{ selected }}</span>
+    <option v-for="option in options" v-bind:value="option.value">
+      {{option.text}}
+    </option>
+  </select>
+  <p>Selected: {{ selected }}</p>
  <br>
  <br>
-  <demo-grid
+ <demo-grid
+    :data="prefixData"
+    :columns="prefixColumns">
+ </demo-grid>
+<br>
+<br>
+ <demo-grid
     :data="gridData"
     :columns="gridColumns">
   </demo-grid>
+
   </div>
 
 <script>
-
-$.ajax({
-  type: "GET",
-  url: "https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-results_130.owl",
-  success: function(data){
-    //console.log(data)
-    new rdfstore.Store(function(err, store) {
-      store.load("text/turtle",data,function(err, results){
-        if(err){
-          console.log(err)
-        }
-        let query = " PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\
-        PREFIX obo:<http://purl.obolibrary.org/obo/>\
-        SELECT *\
-        WHERE { ?subject rdfs:label ?label ;\
-          obo:IAO_0000115 ?desc .\
-            } \
-        "
-        //console.log("inside store load", results)
-        store.execute(query,function(success,results) {
-          console.log("----- Query Results  ----------")
-          //console.log(results)
-          let items = results
-          let triples = []
-          let triple = {}
-
-          for(let i = 0 ; i<items.length; i++){
-            triple['URI'] = items[i]['subject'].value
-            triple['Term'] = items[i]['label'].value
-            triple['Description'] = items[i]['desc'].value
-            triples.push(triple)
-            triple = {}
-          }
-          console.log("triples", triples)
-          // bootstrap the demo
-          var demo = new Vue({
-            el: '#demo',
-            data: {
-              gridColumns: ['Term', 'Description', 'URI'],
-              gridData: triples,
-              selected:''
-            },
-            watch: { 'selected': function() {
-              console.log("demo.selected", demo.selected)
-
-            }}
-          })
-
-        })
-      })
-    })
-  }
-})//end of ajax
+let query = " PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\
+PREFIX obo:<http://purl.obolibrary.org/obo/>\
+SELECT *\
+WHERE { ?subject rdfs:label ?label ;\
+  obo:IAO_0000115 ?desc .\
+    } \
+"
 // register the grid component
 Vue.component('demo-grid', {
   template: '#grid-template',
@@ -119,6 +83,96 @@ Vue.component('demo-grid', {
     }
   }
 })
+  var gridC = new Vue({
+    el: '#gridC',
+    data: {
+      selected:'',
+      options:[
+        {text:'NIDM-Experiment', value:'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl'},
+        {text:'NIDM-Results', value:'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-results_130.owl'}
+      ],
+      gridColumns: [],
+      gridData: [],
+      prefixColumns: [],
+      prefixData:[]
+    },
+    watch: {
+      'selected': function() {
+        console.log("gridC.selected", gridC.selected)
+        $.ajax({
+          type: "GET",
+          url: gridC.selected,
+          success: function(data){
+            successCallBack(data,gridC)
+          }
+        })//ajax call
+      }
+    }//end of watch
+  })
+
+  function successCallBack(data,gridComponent){
+    new rdfstore.Store(function(err, store) {
+      store.load("text/turtle",data,function(err, results){
+        if(err){
+          console.log(err)
+        }
+        //console.log("inside store load", results)
+        store.execute(query,function(success,results) {
+          let items = results
+          let triples = []
+          let triple = {}
+          let prefixItems = []
+          let prefixItem = {}
+          for(let i = 0 ; i<items.length; i++){
+            //triple['URI'] = items[i]['subject'].value
+            triple['Term'] = items[i]['label'].value
+            triple['Description'] = items[i]['desc'].value
+            prefixItem = getPrefixItem(items[i]['subject'].value)
+            triple['URI'] = prefixItem['termWithPrefix']
+            triples.push(triple)
+            if(!isExist(prefixItem, prefixItems)){
+              console.log("prefixItem:", prefixItem.Prefix)
+              prefixItems.push(prefixItem)
+            }
+            triple = {}
+            prefixItem = {}
+          }
+          //console.log("triples", triples)
+          console.log("demo.selected", gridComponent.selected)
+          gridComponent.gridColumns = ['Term', 'Description', 'URI']
+          gridComponent.gridData = triples
+          gridComponent.prefixColumns = ['Prefix', 'URI']
+          gridComponent.prefixData = prefixItems
+        })//end of store execute
+      })//end of load
+    })//rdf store
+  } //end of successCallBack
+  function isExist(obj, arr){
+    for(index in arr){
+      if(arr[index]['Prefix'] === obj['Prefix'])
+        return true
+    }
+    return false
+  }
+  function getPrefixItem(uri){
+    let prefixItem = {}
+    let pfname = uri.split("#")
+    let iri = uri.split("/")
+
+    if(pfname.length>1){
+      let parr = iri[iri.length-1].split("#")
+      //termWithPrefix = iri[iri.length-1]+":"+ pfname[1]
+      termWithPrefix = parr[0]+":"+parr[1]
+      prefixItem['Prefix'] = parr[0]
+      prefixItem['URI'] = pfname[0]
+      prefixItem['termWithPrefix'] = termWithPrefix
+    }else{
+      prefixItem['Prefix'] = iri[iri.length-2]
+      prefixItem['URI'] = uri
+      prefixItem['termWithPrefix'] = uri
+    }
+    return prefixItem
+  }
 </script>
 </body>
 </html>
