@@ -33,60 +33,62 @@
 </head>
 
 <body>
-<br>
-<div id="gridC">
-  <p> <h3>Select NIDM OWL File </h3></p>
-  <select v-model="selected">
-    <option v-for="option in options" v-bind:value="option.value">
-      {{option.text}}
-    </option>
-  </select>
-  <p>Selected: {{ selected }}</p>
- <br>
- <br>
- <demo-grid
-    :data="prefixData"
-    :columns="prefixColumns">
- </demo-grid>
-<br>
-<br>
- <demo-grid
-    :data="gridData"
-    :columns="gridColumns">
-  </demo-grid>
-
+  <br>
+  <div id="gridC">
+    <p> <h3>Select NIDM OWL File </h3></p>
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option v-for="option in options" v-bind:value="option.value">
+        {{option.text}}
+      </option>
+    </select>
+    <p>Selected: {{ selected }}</p>
+    <br>
+    <br>
+    <demo-grid
+      :data="prefixData"
+      :columns="prefixColumns">
+    </demo-grid>
+    <br>
+    <br>
+    <demo-grid
+      :data="gridData"
+      :columns="gridColumns">
+    </demo-grid>
   </div>
 
-<script>
-let query = " PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\
-PREFIX obo:<http://purl.obolibrary.org/obo/>\
-SELECT *\
-WHERE { ?subject rdfs:label ?label ;\
-  obo:IAO_0000115 ?desc .\
-    } \
-"
-// register the grid component
-Vue.component('demo-grid', {
-  template: '#grid-template',
-  props: {
-    data: Array,
-    columns: Array
-  },
-  data: function () {
-    var sortOrders = {}
-    this.columns.forEach(function (key) {
-      sortOrders[key] = 1
-    })
-    return {
-      sortKey: '',
-      sortOrders: sortOrders
+  <script>
+  let prefixes = {}
+  let prefixArray = []
+  let query = " PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\
+  PREFIX obo:<http://purl.obolibrary.org/obo/>\
+  SELECT *\
+  WHERE { ?subject rdfs:label ?label ;\
+    obo:IAO_0000115 ?desc .\
+      } \
+  "
+  // register the grid component
+  Vue.component('demo-grid', {
+    template: '#grid-template',
+    props: {
+      data: Array,
+      columns: Array
+    },
+    data: function () {
+      var sortOrders = {}
+      this.columns.forEach(function (key) {
+        sortOrders[key] = 1
+      })
+      return {
+        sortKey: '',
+        sortOrders: sortOrders
+      }
     }
-  }
-})
+  })
   var gridC = new Vue({
     el: '#gridC',
     data: {
-      selected:'',
+      selected:'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl',
       options:[
         {text:'NIDM-Experiment', value:'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl'},
         {text:'NIDM-Results', value:'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-results_130.owl'}
@@ -95,6 +97,23 @@ Vue.component('demo-grid', {
       gridData: [],
       prefixColumns: [],
       prefixData:[]
+    },
+    computed: {
+      showDefaultOwl:{
+        get: function(){
+
+        },
+        // setter
+        set: function (gurl) {
+          $.ajax({
+            type: "GET",
+            url: gurl,
+            success: function(data1){
+              successCallBack(data1,gridC)
+            }
+          })//ajax call
+        }
+      }
     },
     watch: {
       'selected': function() {
@@ -109,10 +128,44 @@ Vue.component('demo-grid', {
       }
     }//end of watch
   })
+  gridC.showDefaultOwl = 'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl'
 
   function successCallBack(data,gridComponent){
+    console.log("------------")
+    //console.log("---- data---", data)
+    let pdata = data.split("\n")
+    console.log("split data:  --\n", pdata[1])
+    for(let i=0;i<pdata.length; i++){
+      let line = pdata[i].split(" ")
+      if(line[0] == "@prefix"){
+        if(line[1] == ":"){
+          console.log("TODO")
+          prefixes[line[2]] = "turtle"
+          let item = {}
+          item['Prefix'] = "turtle"
+          item['URI'] = line[2]
+          prefixArray.push(item)
+        }else{
+          prefixes[line[2]] = line[1]
+          let item = {}
+          item['Prefix'] = line[1]
+          item['URI'] = line[2]
+          prefixArray.push(item)
+        }
+      }else if(line[0] == "@base"){
+        prefixes[line[1]] = "owl"
+        let item = {}
+        item['Prefix'] = "owl"
+        item['URI'] = line[1]
+        prefixArray.push(item)
+      }else{
+        break;
+      }
+    }
+    console.log("split data:  --\n", prefixes)
     new rdfstore.Store(function(err, store) {
       store.load("text/turtle",data,function(err, results){
+        //console.log(store)
         if(err){
           console.log(err)
         }
@@ -130,10 +183,10 @@ Vue.component('demo-grid', {
             prefixItem = getPrefixItem(items[i]['subject'].value)
             triple['URI'] = prefixItem['termWithPrefix']
             triples.push(triple)
-            if(!isExist(prefixItem, prefixItems)){
+            /*if(!isExist(prefixItem, prefixItems)){
               console.log("prefixItem:", prefixItem.Prefix)
               prefixItems.push(prefixItem)
-            }
+            }*/
             triple = {}
             prefixItem = {}
           }
@@ -142,7 +195,8 @@ Vue.component('demo-grid', {
           gridComponent.gridColumns = ['Term', 'Description', 'URI']
           gridComponent.gridData = triples
           gridComponent.prefixColumns = ['Prefix', 'URI']
-          gridComponent.prefixData = prefixItems
+          //gridComponent.prefixData = prefixItems
+          gridComponent.prefixData = prefixArray
         })//end of store execute
       })//end of load
     })//rdf store
@@ -154,6 +208,7 @@ Vue.component('demo-grid', {
     }
     return false
   }
+
   function getPrefixItem(uri){
     let prefixItem = {}
     let pfname = uri.split("#")
