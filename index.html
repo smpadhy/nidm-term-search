@@ -131,33 +131,19 @@
   gridC.showDefaultOwl = 'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl'
 
   function successCallBack(data,gridComponent){
-    console.log("------------")
-    //console.log("---- data---", data)
-    let pdata = data.split("\n")
-    console.log("split data:  --\n", pdata[1])
-    for(let i=0;i<pdata.length; i++){
-      let line = pdata[i].split(" ")
+    let lines = data.split("\n")
+    for(let i=0;i<lines.length; i++){
+      let line = lines[i].split(" ")
       if(line[0] == "@prefix"){
+        substrPrefix = line[2].substring(1,line[2].length-2)
         if(line[1] == ":"){
           console.log("TODO")
-          prefixes[line[2]] = "turtle"
-          let item = {}
-          item['Prefix'] = "turtle"
-          item['URI'] = line[2]
-          prefixArray.push(item)
+          prefixes[substrPrefix] = "turtle"
         }else{
-          prefixes[line[2]] = line[1]
-          let item = {}
-          item['Prefix'] = line[1]
-          item['URI'] = line[2]
-          prefixArray.push(item)
+          prefixes[substrPrefix] = line[1].substring(0,line[1].length-1)
         }
       }else if(line[0] == "@base"){
-        prefixes[line[1]] = "owl"
-        let item = {}
-        item['Prefix'] = "owl"
-        item['URI'] = line[1]
-        prefixArray.push(item)
+        prefixes[substrPrefix] = "owl"
       }else{
         break;
       }
@@ -165,11 +151,9 @@
     console.log("split data:  --\n", prefixes)
     new rdfstore.Store(function(err, store) {
       store.load("text/turtle",data,function(err, results){
-        //console.log(store)
         if(err){
           console.log(err)
         }
-        //console.log("inside store load", results)
         store.execute(query,function(success,results) {
           let items = results
           let triples = []
@@ -182,28 +166,30 @@
             triple['Description'] = items[i]['desc'].value
             prefixItem = getPrefixItem(items[i]['subject'].value)
             triple['URI'] = prefixItem['termWithPrefix']
-            triples.push(triple)
-            /*if(!isExist(prefixItem, prefixItems)){
+            if(!isExist(triple, triples,'URI')){
+              triples.push(triple)
+            }
+            if(!isExist(prefixItem, prefixItems,'Prefix')){
               console.log("prefixItem:", prefixItem.Prefix)
               prefixItems.push(prefixItem)
-            }*/
+            }
             triple = {}
             prefixItem = {}
           }
-          //console.log("triples", triples)
           console.log("demo.selected", gridComponent.selected)
           gridComponent.gridColumns = ['Term', 'Description', 'URI']
           gridComponent.gridData = triples
           gridComponent.prefixColumns = ['Prefix', 'URI']
-          //gridComponent.prefixData = prefixItems
-          gridComponent.prefixData = prefixArray
+          gridComponent.prefixData = prefixItems
         })//end of store execute
       })//end of load
     })//rdf store
   } //end of successCallBack
-  function isExist(obj, arr){
-    for(index in arr){
-      if(arr[index]['Prefix'] === obj['Prefix'])
+
+  function isExist(obj, arr,prop){
+    for(index=0;index < arr.length; index++){
+      let x = arr[index]
+      if(x[prop] === obj[prop])
         return true
     }
     return false
@@ -213,18 +199,17 @@
     let prefixItem = {}
     let pfname = uri.split("#")
     let iri = uri.split("/")
-
-    if(pfname.length>1){
-      let parr = iri[iri.length-1].split("#")
-      //termWithPrefix = iri[iri.length-1]+":"+ pfname[1]
-      termWithPrefix = parr[0]+":"+parr[1]
-      prefixItem['Prefix'] = parr[0]
-      prefixItem['URI'] = pfname[0]
-      prefixItem['termWithPrefix'] = termWithPrefix
-    }else{
-      prefixItem['Prefix'] = iri[iri.length-2]
-      prefixItem['URI'] = uri
-      prefixItem['termWithPrefix'] = uri
+    for(item in prefixes){
+      if(uri.indexOf(item)!=-1){
+        prefixItem['Prefix'] = prefixes[item]
+        prefixItem['URI'] = item
+        if(pfname.length>1){
+          let parr = iri[iri.length-1].split("#")
+          prefixItem['termWithPrefix'] = prefixes[item]+ ":" + parr[1]
+        }else{
+          prefixItem['termWithPrefix'] = prefixes[item]+ ":" + iri[iri.length-1]
+        }
+      }
     }
     return prefixItem
   }
