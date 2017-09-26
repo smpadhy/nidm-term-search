@@ -132,6 +132,7 @@
   gridC.showDefaultOwl = 'https://raw.githubusercontent.com/smpadhy/nidm-term-search/master/owl/nidm-experiment.owl'
 
   function successCallBack(data,gridComponent){
+    prefixes = {}
     let lines = data.split("\n")
     for(let i=0;i<lines.length; i++){
       let line = lines[i].split(" ")
@@ -141,11 +142,14 @@
           console.log("TODO")
           prefixes[substrPrefix] = "turtle"
         }else{
-          prefixes[substrPrefix] = line[1].substring(0,line[1].length-1)
+          let pf = line[1].substring(0,line[1].length-1)
+          prefixes[substrPrefix] = pf
         }
       }else if(line[0] == "@base"){
+        substrPrefix = line[1].substring(1,line[2].length-2)
         prefixes[substrPrefix] = "owl"
       }else{
+        console.log("prefixes--: ", prefixes)
         break;
       }
     }
